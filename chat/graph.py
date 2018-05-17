@@ -22,7 +22,7 @@ class Database():
     - graph: Graph database. 图数据库。
     """
     def __init__(self, password="train", userid="A0001"):
-        graphURL = "http://" + getConfig("neo4j", "host") + getConfig("neo4j", "port") + "db/data"
+        graphURL = "http://" + getConfig("neo4j", "host") + ":" + getConfig("neo4j", "port") + "/db/data"
         self.rdb = None
         self.graph = Graph(graphURL, username = getConfig("neo4j", "user"), password = getConfig("neo4j", "password"))
         self.selector = NodeSelector(self.graph)
