@@ -10,6 +10,7 @@ from py2neo import Graph, Node, Relationship, NodeSelector
 from tkinter.filedialog import askopenfilename
 from .mytools import read_excel, write_excel, set_excel_style
 from .semantic import get_tag
+from .config import getConfig
 
 
 class Database():
@@ -21,8 +22,9 @@ class Database():
     - graph: Graph database. 图数据库。
     """
     def __init__(self, password="train", userid="A0001"):
+        graphURL = "http://" + getConfig("neo4j", "host") + getConfig("neo4j", "port") + "db/data"
         self.rdb = None
-        self.graph = Graph("http://localhost:7474/db/data", password=password)
+        self.graph = Graph(graphURL, username = getConfig("neo4j", "user"), password = getConfig("neo4j", "password"))
         self.selector = NodeSelector(self.graph)
         self.user = self.selector.select("User", userid=userid).first()
         if not self.user:
