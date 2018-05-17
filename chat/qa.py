@@ -64,7 +64,7 @@ class Robot():
     - do_not_know: 匹配不到时随机回答
     """
     def __init__(self, password="train", userid="A0001"):
-        graphURL = "http://" + getConfig("neo4j", "host") + getConfig("neo4j", "port") + "db/data"
+        graphURL = "http://" + getConfig("neo4j", "host") + ":" + getConfig("neo4j", "port")
         self.graph = Graph(graphURL, username = getConfig("neo4j", "user"), password = getConfig("neo4j", "password"))
         self.selector = NodeSelector(self.graph)
         # self.locations = get_navigation_location()
