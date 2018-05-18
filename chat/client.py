@@ -18,7 +18,7 @@ import socket
 from .config import getConfig
 
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-mysock.connect(getConfig("nluserver", "host"), getConfig("nluserver", "port"))
+mysock.connect(( getConfig("nluserver", "host"), int(getConfig("nluserver", "port")) ))
 
 def question_pack(info="", userid="A0001"):
     """Package the question as the JSON format specified by the server.
