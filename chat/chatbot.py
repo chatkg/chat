@@ -12,14 +12,12 @@ def hello():
 @app.route("/ask", methods=['POST'])
 def ask():
     message = request.form['messageText'].strip()
-    # kernel now ready for use
-    while True:
-        if message == "quit":
-            exit()
-        else:
-            bot_response = match(question = message)
-            # print bot_response
-            return jsonify({'status':'OK','answer':json.loads(bot_response)['content']})
+    if message == "quit":
+        exit()
+    else:
+        bot_response = match(question = message)
+        # print bot_response
+        return jsonify({'status':'OK','answer':json.loads(bot_response)['content']})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
