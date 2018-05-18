@@ -11,13 +11,11 @@ def hello():
 
 @app.route("/ask", methods=['POST'])
 def ask():
-    message = request.form['messageText'].encode('utf-8').strip()
+    message = request.form['messageText'].strip()
     # kernel now ready for use
     while True:
         if message == "quit":
             exit()
-        elif message == "save":
-            kernel.saveBrain("bot_brain.brn")
         else:
             bot_response = match(question = message)
             # print bot_response
