@@ -109,6 +109,9 @@
                 e.preventDefault();
 
                 var message = $('#messageText').val();
+                if(message=="clear") {
+                    $(".media-list").empty();
+                }
                 $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + message + '<hr/></div></div></div></li>');
                 $.ajax({
                     type: "POST",
@@ -119,13 +122,8 @@
 
                         var answer = response.answer;
                         const chatPanel = document.getElementById("chatPanel");
-                        if(answer=="clear") {
-                            $(".media-list").empty();
-                        }
-
-                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
-			$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
-			
+                        $(".media-list").append('<li class="media pull-right text-danger"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
+			             $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
                     },
                     error: function(error) {
                         console.log(error);
