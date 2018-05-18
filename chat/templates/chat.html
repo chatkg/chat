@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Chatbot</title>
-	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
         <style type="text/css">
@@ -66,7 +67,7 @@
         <div class="container background-color: rgb(255,0,255);">
 		  
             <div class="row">
-                <h3 class="text-center"><small><strong>Artificial</strong></small><font color="white"> Intelligence!!! </font><small><strong>Here</strong></small><font color="white"> I am..</font></h3>
+                <h3 class="text-center"><small><strong>小白</strong></small></h3>
 
                 <div class="col-md-4 col-md-offset-4">
 				
@@ -95,9 +96,7 @@
 				
             </div>
         </div>
-
-        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
         <script>
         $(function() {
             $('#chatbot-form-btn').click(function(e) {
@@ -109,12 +108,12 @@
                 e.preventDefault();
 
                 var message = $('#messageText').val();
-                
+
                 if(message=="clear") {
                     $(".media-list").empty();
                 }
 
-                $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + message + '<hr/></div></div></div></li>');
+                $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + message + '</div></div></div></li>');
                 $.ajax({
                     type: "POST",
                     url: "/ask",
@@ -124,7 +123,7 @@
 
                         var answer = response.answer;
                         const chatPanel = document.getElementById("chatPanel");
-                        $(".media-list").append('<li class="media text-danger"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
+                        $(".media-list").append('<li class="media text-right"><div class="media-body"><div class="media"><div class="media-body">' + answer + '</div></div></div></li>');
 			             $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
                     },
                     error: function(error) {
