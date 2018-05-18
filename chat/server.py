@@ -110,10 +110,10 @@ def start(host="localhost", port=7000):
             Defaults to 7000.
     """
     # 多线程处理并发请求
-    sock = socketserver.ThreadingTCPServer((host, port), MyTCPHandler)
+    sock = socketserver.ThreadingTCPServer((host, int(port)), MyTCPHandler)
     sock.serve_forever()
 
 if __name__ == "__main__":
     host = getConfig("nluserver", "host")
     port = getConfig("nluserver", "port")
-    start(host, int(port))
+    start(host, port)
