@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
-import os
-from .client import match
+import os,sys
+sys.path.append("/data/app/chat/")
+from chat.client import match
 
 app = Flask(__name__)
 
@@ -10,7 +11,7 @@ def hello():
 
 @app.route("/ask", methods=['POST'])
 def ask():
-
+    message = request.form['messageText'].encode('utf-8').strip()
     # kernel now ready for use
     while True:
         if message == "quit":
