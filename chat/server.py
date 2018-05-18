@@ -116,4 +116,4 @@ def start(host="localhost", port=7000):
 if __name__ == "__main__":
     host = getConfig("nluserver", "host")
     port = getConfig("nluserver", "port")
-    start(host, port)
+    start(host, int(port))
